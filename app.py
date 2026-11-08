@@ -1,3 +1,4 @@
+import random
 import streamlit as st
 
 st.set_page_config(
@@ -6,11 +7,12 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("🧬 Forenzička biologija 2026/2027")
-st.caption("Interaktivno obnavljanje gradiva")
+st.title("🧬 Forenzička biologija 2026/27")
+st.caption("Prirodno-matematički fakultet u Nišu")
+
 st.markdown(
     """
-    Izaberite karticu za **predavanja** ili **vežbe**. U svakoj lekciji
+    Izaberite karticu za **predavanje** ili **vežbu**. U svakoj lekciji
     nalaze se sažetak ključnih pojmova i 20 pitanja sa ponuđenim odgovorima.
     Na kraju kviza dobijate broj tačnih odgovora i objašnjenja.
     """
@@ -182,7 +184,7 @@ LECTURE_QUESTIONS = [
     "Mendel i Morgan",
     "Avery i Griffith"], 0,
  "Fotografija 51 povezana je sa difrakcionim radom Rosalind Franklin i njenog doktoranda Raymonda Goslinga."),
-("Šta opisuje centralna dogma molekularne biologije u okviru predavanja?", [
+("Šta opisuje centralna dogma molekularne biologije?", [
     "Prenos genetičke informacije od nukleinskih kiselina ka proteinima, a ne obrnuto",
     "Prenos informacije od proteina ka DNK",
     "Prevođenje proteina u RNK",
@@ -334,19 +336,37 @@ EXERCISE_QUESTIONS = [
  "Prema prezentaciji, rizik kontaminacije mesta zločina raste kada broj prisutnih nije ograničen."),
 ]
 
+def prepare_quiz_questions(key, questions):
+    """Ravnomerno raspoređuje tačne odgovore na pozicije A–D."""
+    rng = random.Random(f"forenzicka-biologija-{key}")
+    correct_positions = [0, 1, 2, 3] * (len(questions) // 4)
+    correct_positions += list(range(len(questions) % 4))
+    rng.shuffle(correct_positions)
+
+    prepared = []
+    for item, correct_position in zip(questions, correct_positions):
+        question, options, correct_index, explanation = item
+        correct_answer = options[correct_index]
+        distractors = [option for index, option in enumerate(options) if index != correct_index]
+        rng.shuffle(distractors)
+        shuffled_options = list(distractors)
+        shuffled_options.insert(correct_position, correct_answer)
+        prepared.append((question, shuffled_options, correct_position, explanation))
+    return prepared
+
+
 def render_quiz(key, questions):
-    st.subheader("Kviz — 20 pitanja")
+    questions = prepare_quiz_questions(key, questions)
+    st.subheader("Kviz")
     st.caption("Izaberite po jedan odgovor za svako pitanje, a zatim kliknite na „Proveri odgovore“.")
     with st.form(f"form_{key}"):
         answers = []
         for i, (q, opts, correct, explanation) in enumerate(questions, 1):
             st.markdown(f"**{i}. {q}**")
             answer = st.radio(
-                "Odaberite odgovor:",
-                opts,
-                index=None,
-                key=f"{key}_q{i}",
-                label_visibility="collapsed",
+                "Odaberite odgovor:", opts, index=None,
+                key=f"{key}_q{i}", label_visibility="collapsed",
+                format_func=lambda option, choices=opts: f"{chr(65 + choices.index(option))}. {option}",
             )
             answers.append(answer)
             if i != len(questions):
@@ -354,10 +374,7 @@ def render_quiz(key, questions):
         submitted = st.form_submit_button("Proveri odgovore", type="primary", use_container_width=True)
 
     if submitted:
-        score = 0
-        for answer, item in zip(answers, questions):
-            if answer == item[1][item[2]]:
-                score += 1
+        score = sum(answer == item[1][item[2]] for answer, item in zip(answers, questions))
         st.markdown("### Rezultat")
         st.metric("Tačni odgovori", f"{score} / {len(questions)}", f"{score/len(questions)*100:.0f}%")
         if score == len(questions):
@@ -373,14 +390,16 @@ def render_quiz(key, questions):
             for i, (answer, item) in enumerate(zip(answers, questions), 1):
                 q, opts, correct, explanation = item
                 correct_answer = opts[correct]
+                correct_label = chr(65 + correct)
                 is_correct = answer == correct_answer
                 st.markdown(f"**{i}. {'Tačno' if is_correct else 'Netačno'}**")
                 st.write(q)
-                st.write(f"Tačan odgovor: **{correct_answer}**")
+                st.write(f"Tačan odgovor: **{correct_label}. {correct_answer}**")
                 if answer is None:
                     st.caption("Nije izabran odgovor.")
                 elif not is_correct:
-                    st.caption(f"Vaš odgovor: {answer}")
+                    selected_label = chr(65 + opts.index(answer))
+                    st.caption(f"Vaš odgovor: {selected_label}. {answer}")
                 st.caption(explanation)
                 if i != len(questions):
                     st.divider()
@@ -388,13 +407,13 @@ def render_quiz(key, questions):
 tab1, tab2 = st.tabs(["📘 Prvo predavanje — Forenzička genetika", "🔬 Prve vežbe — Mesto zločina i tragovi"])
 
 with tab1:
-    st.header("Prvo predavanje: Uvod u forenzičku genetiku")
+    st.header("Predavanje 1: Uvod u forenzičku genetiku")
     with st.expander("Sažetak lekcije", expanded=True):
         st.markdown(LECTURE_SUMMARY)
     render_quiz("lecture", LECTURE_QUESTIONS)
 
 with tab2:
-    st.header("Prve vežbe: Mesto zločina i tragovi sa lica mesta")
+    st.header("Vežba 1: Mesto zločina i tragovi sa lica mesta")
     with st.expander("Sažetak lekcije", expanded=True):
         st.markdown(EXERCISE_SUMMARY)
     render_quiz("exercise", EXERCISE_QUESTIONS)
