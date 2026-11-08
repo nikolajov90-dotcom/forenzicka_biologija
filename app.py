@@ -217,18 +217,18 @@ LECTURE_QUESTIONS = [
 ]
 
 EXERCISE_QUESTIONS = [
-("Šta obuhvata pojam mesta zločina prema materijalu sa vežbi?", [
+("Šta obuhvata pojam mesta zločina?", [
     "Mesto izvršenja radnje, mesto nastupanja posledice i druga mesta sa relevantnim predmetima i tragovima",
     "Isključivo prostoriju u kojoj je pronađena žrtva",
     "Samo mesto na kome je osumnjičeni uhapšen",
     "Samo laboratoriju u kojoj se analiziraju uzorci"], 0,
  "Mesto zločina može obuhvatiti više lokacija na kojima se nalaze predmeti i tragovi važni za dokazivanje."),
-("Koji redosled kategorija mesta zločina je naveden u prezentaciji?", [
+("Koja podela opisuje redosled kategorija mesta zločina?", [
     "Primarno, sekundarno i tercijarno",
     "Vidljivo, nevidljivo i latentno",
     "Fizičko, hemijsko i biološko",
     "Lokalno, regionalno i globalno"], 0,
- "Prezentacija razlikuje primarno, sekundarno i tercijarno mesto zločina."),
+ "Razlikujemo primarno, sekundarno i tercijarno mesto zločina."),
 ("Šta je netaknuto mesto zločina?", [
     "Mesto na kome počinilac nije preduzeo radnje prikrivanja ili uništavanja dokaza",
     "Mesto koje je policija već detaljno obradila",
@@ -268,12 +268,12 @@ EXERCISE_QUESTIONS = [
     "Dozvoljavanje slobodnog kretanja prisutnih",
     "Odmah uzorkovati svaki predmet bez dokumentovanja"], 0,
  "Obezbeđenje sprečava promenu ili gubitak tragova pre njihove obrade."),
-("Kako je u prezentaciji definisan uviđaj?", [
+("Navesti definiciju uviđaja.", [
     "Hitna istražna radnja kada je neposredno opažanje potrebno za utvrđivanje ili razjašnjenje važne činjenice",
     "Rutinska laboratorijska analiza DNK",
     "Sudsko saslušanje osumnjičenog",
     "Obavezna radnja koja se sprovodi na svakom mestu događaja"], 0,
- "Uviđaj je hitna istražna radnja; prezentacija navodi da nije obavezan i da zavisi od odluke organa koji vodi postupak."),
+ "Uviđaj je hitna istražna radnja; on nije obavezan i zavisi od odluke organa koji vodi postupak."),
 ("Koja faza obrade lica mesta uključuje prikupljanje informacija razgovorom sa svedocima?", [
     "Informativna/verbalna faza",
     "Statička faza",
@@ -297,14 +297,14 @@ EXERCISE_QUESTIONS = [
     "Samo uzimanje izjava",
     "Samo fotografisanje osumnjičenog",
     "Isključivo DNK sekvenciranje"], 0,
- "Prezentacija navodi intervju, fotografije, skicu, pronalaženje/fiksiranje tragova i dokumentaciju."),
+ "Aktivnosti: intervju, fotografisanje, skiciranje, pronalaženje/fiksiranje tragova i dokumentovanje."),
 ("Koja je svrha skice mesta zločina?", [
     "Da prikaže izgled lica mesta i stvarni položaj žrtve ili dokaza",
     "Da zameni sve fotografije i zapisnike",
     "Da prikaže genetički profil osumnjičenog",
     "Da utvrdi vreme nastanka svake povrede"], 0,
  "Skica prikazuje prostorni raspored i položaj žrtve ili dokaza."),
-("Šta je fizički dokaz prema prezentaciji?", [
+("Šta je fizički dokaz?", [
     "Svaki predmet koji može povezati žrtvu ili osumnjičenog sa mestom zločina",
     "Samo predmet koji sadrži vidljivu krv",
     "Isključivo DNK profil",
@@ -315,25 +315,25 @@ EXERCISE_QUESTIONS = [
     "Polomljeno staklo i rasuti prah",
     "Otisci cipela i guma",
     "Alati i ključevi"], 0,
- "Prezentacija razlikuje dokaze u tragovima, biološke dokaze i uporedne dokaze."),
-("Koji biološki materijal je u prezentaciji svrstan u I grupu prema potencijalu DNK?", [
+ "Razlikujemo dokaze u tragovima, biološke dokaze i uporedne dokaze."),
+("Koji biološki materijal je svrstan u I grupu prema potencijalu DNK?", [
     "Sperma i tkiva",
     "Krv (leukociti)",
     "Pljuvačka i sekret iz nosa",
     "Epitelne ćelije kože"], 0,
- "Prema podeli sa vežbi: I grupa su sperma i tkiva; II krv; III pljuvačka i sekret iz nosa; IV epitelne ćelije kože."),
+ "I grupa su sperma i tkiva; II krv; III pljuvačka i sekret iz nosa; IV epitelne ćelije kože."),
 ("Koje metode se koriste za otkrivanje bioloških tragova?", [
     "Vizuelni pregled, alternativni izvori svetlosti i hemijski reagensi",
     "Samo PCR",
     "Samo rendgensko snimanje",
     "Isključivo mikroskopija elektronskim mikroskopom"], 0,
- "Prezentacija navodi vizuelni pregled, alternativne izvore svetlosti i hemijske reagense."),
+ "Metode: vizuelni pregled, alternativni izvori svetlosti i hemijski reagensi."),
 ("Zašto je važno ograničiti broj ljudi na mestu zločina?", [
     "Da bi se smanjila mogućnost kontaminacije tragova",
     "Da bi se povećao broj mogućih tragova",
     "Da bi se ubrzalo sušenje bioloških uzoraka",
     "Da bi se izbegla potreba za dokumentovanjem"], 0,
- "Prema prezentaciji, rizik kontaminacije mesta zločina raste kada broj prisutnih nije ograničen."),
+ "Rizik kontaminacije mesta zločina raste kada broj prisutnih nije ograničen."),
 ]
 
 def prepare_quiz_questions(key, questions):
