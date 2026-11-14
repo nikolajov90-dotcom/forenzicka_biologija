@@ -8,7 +8,7 @@ st.set_page_config(
 )
 
 st.title("🧬 Forenzička biologija 2026/27")
-st.caption("Prirodno-matematički fakultet u Nišu")
+st.caption("Prirodno-matematički fakultet u Nišu, Departman za Biologiju i ekologiju")
 
 st.markdown(
     """
@@ -336,15 +336,242 @@ EXERCISE_QUESTIONS = [
  "Rizik kontaminacije mesta zločina raste kada broj prisutnih nije ograničen."),
 ]
 
+LECTURE2_SUMMARY = '\n### 1. Struktura ljudskog genoma\nLjudski genom obuhvata jedarnu DNK (oko 3,2 Gb) i mitohondrijsku DNK (oko 16,5 kb). Podela jedarne DNK na gensku i vangensku(ekstragensku) DNK, kao i na kodirajuće/regulatorne regione, nekodirajuće regione, tandemske i rasute ponovke.\n\n### 2. Satelitska DNK\nNaziv potiče od eksperimenata centrifugiranja DNK u gustinskom gradijentu, kada su uočeni posebni „satelitski“ pojasevi. Satelitska DNK je veoma repetitivna i nalazi se pretežno u heterohromatinu oko centromera i telomera. Učestvuje u organizaciji genoma i održavanju strukture hromozoma.\n\n### 3. Genetička sličnost i polimorfizmi\nLjudi dele oko 99,9% genoma, dok približno 0,1% varijacija doprinosi razlikama među pojedincima. Monomorfni lokusi nemaju uočljivu varijaciju u posmatranoj populaciji, dok se polimorfni lokusi razlikuju među osobama. Polimorfizmi su osnova DNK profilisanja.\n\n### 4. Markeri u forenzičkoj genetici\nForenzičko profilisanje poredi odabrane genetičke markere, a ne čitave genome. Pogodni lokusi su visoko polimorfni, lako i ekonomično se karakterišu, daju profile koji se mogu interpretirati i porediti, imaju nisku mutacionu stopu i nisu pod značajnim selektivnim pritiskom.\n\n### 5. VNTR, STR i SNP\n- **VNTR/minisateliti:** ponavljajuće jedinice od približno 6–100 bp; aleli mogu biti veoma dugi, pa analiza zahteva veću količinu očuvane DNK i interpretacija može biti složena.\n- **STR/mikrosateliti:** kratki tandemски ponovci; motivi su najčešće 1–6 bp, a ukupne dužine alela uglavnom 20–300 bp. Kratki fragmenti pogodni su za PCR i rutinsko forenzičko profilisanje.\n- **SNP:** varijacija pojedinačne baze, najčešće sa dva alela. Pojedinačni SNP je manje polimorfan od STR-a, ali su SNP-ovi brojni u genomu.\n\n### 6. Izolacija i kvantifikacija DNK\nIzolacija obuhvata lizu ćelija, denaturaciju proteina i separaciju DNK od proteina i drugih ćelijskih komponenti. Hemijski postupci koriste deterdžente (SDS, Triton X-100, NP-40), haotropne agense i EDTA; mogu se primeniti i mehaničke metode kao što su sonikacija i bead-beating.\n\nPre daljih analiza procenjuju se količina, kvalitet i stepen degradacije DNK. UV spektrofotometrija meri apsorpciju na 260 nm, dok se odnos OD260/OD280 koristi kao pokazatelj čistoće. Gel-elektroforeza omogućava vizuelizaciju i semi-kvantifikaciju. Fluorimetrija koristi specifične boje/kitove za kvantifikaciju, a PCR omogućava umnožavanje ciljnih STR fragmenata iz malih količina DNK.\n'
+
+LECTURE2_QUESTIONS = [
+    ("Koliki deo ukupne ljudske DNK čini kodirajuća DNK?", [
+        "Oko 1,5%", "Oko 10%", "Oko 25%", "Oko 75%"], 0,
+     "Kodirajući i regulatorni regioni čine približno 1,5% ukupne DNK."),
+    ("Šta je alternativni splajsing?", [
+        "Proces kojim se iz iste pre-mRNK mogu formirati različite zrele mRNK",
+        "Umnožavanje DNK pomoću PCR-a",
+        "Razdvajanje DNK fragmenata elektroforezom",
+        "Uklanjanje introna iz genoma bez transkripcije"], 0,
+     "Alternativni splajsing omogućava nastanak različitih transkripata iz istog gena i doprinosi većem broju proteinskih varijanti."),
+    ("Kolika je približna veličina mitohondrijske DNK čoveka?", [
+        "16,5 kb", "3,2 Gb", "300 bp", "1,5 Mb"], 0,
+     "Mitohondrijski genom čoveka ima približno 16,5 hiljada baznih parova."),
+    ("Zašto je satelitska DNK dobila taj naziv?", [
+        "Zato što tokom centrifugiranja u gradijentu gustine može formirati odvojene pojaseve",
+        "Zato što se nalazi isključivo u mitohondrijama",
+        "Zato što kodira proteine neophodne za kretanje ćelije",
+        "Zato što se nalazi samo na polnim hromozomima"], 0,
+     "Razlike u baznom sastavu mogu dovesti do izdvajanja satelitskih pojaseva od glavnog DNK pojasa."),
+    ("Gde se satelitska DNK pretežno nalazi?", [
+        "U heterohromatinu oko centromera i telomera",
+        "Isključivo u egzonima",
+        "U ribozomima",
+        "Samo u mitohondrijskom matriksu"], 0,
+     "Satelitska DNK je naročito zastupljena u heterohromatinskim regionima oko centromera i telomera."),
+    ("Kolika je približna genetička razlika između većine ljudi?", [
+        "Oko 0,1% DNK", "Oko 5% DNK", "Oko 10% DNK", "Oko 25% DNK"], 0,
+     "Ljudi dele približno 99,9% sekvence genoma, dok oko 0,1% varijacija doprinosi razlikama među pojedincima."),
+    ("Koja je glavna uloga polimorfnih lokusa u forenzičkoj genetici?", [
+        "Omogućavaju razlikovanje osoba na osnovu varijacija u DNK",
+        "Omogućavaju određivanje krvnog pritiska",
+        "Određuju starost osobe sa preciznošću od jedne godine",
+        "Služe isključivo za određivanje pola"], 0,
+     "Polimorfni lokusi imaju različite alele među osobama i zato su informativni za DNK profilisanje."),
+    ("Kako se naziva lokus čija je sekvenca ista među osobama u određenoj populaciji?", [
+        "Monomorfni lokus", "Polimorfni lokus", "STR lokus", "SNP lokus"], 0,
+     "Monomorfni lokus nema uočljivu varijaciju sekvence u posmatranoj populaciji."),
+    ("Koja osobina je poželjna kod lokusa koji se koriste u forenzičkoj genetici?", [
+        "Visoka polimorfnost i niska mutaciona stopa",
+        "Visoka mutaciona stopa i jaka selekcija",
+        "Nemogućnost poređenja rezultata između laboratorija",
+        "Isključivo prisustvo u kodirajućim regionima"], 0,
+     "Forenzički markeri treba da budu informativni, stabilni i jednostavni za karakterizaciju i poređenje."),
+    ("Koja je osnovna razlika između VNTR i STR lokusa?", [
+        "Razlikuju se po dužini osnovne ponavljajuće jedinice",
+        "VNTR se nalaze samo u mitohondrijama, a STR samo u jedru",
+        "STR nemaju ponovljene sekvence",
+        "VNTR predstavljaju promene jedne baze"], 0,
+     "VNTR imaju motive približno 6–100 bp, dok su STR motivi uglavnom 1–6 bp."),
+    ("Koja je tipična dužina ponavljajućeg motiva kod VNTR lokusa?", [
+        "6–100 bp", "1–6 bp", "100–500 bp", "Tačno 1 bp"], 0,
+     "Minisatelitski VNTR motivi imaju približno 6 do 100 baznih parova."),
+    ("Zašto se VNTR lokusi danas ređe koriste u rutinskoj forenzici?", [
+        "Često zahtevaju veću količinu nedegradovane DNK, a interpretacija može biti složena",
+        "Nemaju varijabilnost među osobama",
+        "Ne mogu se analizirati restrikcionim enzimima",
+        "Nalaze se samo kod bakterija"], 0,
+     "Dugački VNTR fragmenti teže se analiziraju u malim ili degradiranim uzorcima."),
+    ("Koja je osobina STR lokusa posebno korisna za forenzičko profilisanje?", [
+        "Kratki su i mogu se umnožavati PCR metodom",
+        "Uvek imaju samo jedan alel",
+        "Ne postoje na autozomima",
+        "Ne mogu se analizirati u mešanim uzorcima"], 0,
+     "Kratka dužina STR alela omogućava PCR amplifikaciju i analizu male količine DNK."),
+    ("Koji tip STR motiva je čest u forenzičkim analizama?", [
+        "Tetranukleotidni ponovci", "Ponovci od 50 nukleotida", "Jedinični proteinski motivi", "Motivi od 1000 bp"], 0,
+     "Mnogi STR lokusi koji se koriste u forenzici imaju tetranukleotidne motive."),
+    ("Šta predstavlja SNP?", [
+        "Varijaciju u jednom nukleotidu DNK sekvence",
+        "Promenu broja čitavih hromozoma",
+        "Ponavljanje motiva od 100 baznih parova",
+        "Razliku u dužini proteinskog lanca"], 0,
+     "SNP je polimorfizam jednog nukleotida; najčešće postoje dva alela na datom mestu."),
+    ("Zašto SNP markeri pojedinačno imaju manju diskriminatornu moć od STR lokusa?", [
+        "Najčešće imaju samo dva alela",
+        "U genomu se javljaju samo jednom",
+        "Ne mogu se nasleđivati",
+        "Uvek su pod jakim selektivnim pritiskom"], 0,
+     "Bialelna priroda većine SNP-ova znači da je pojedinačni lokus manje polimorfan od STR lokusa."),
+    ("Koji uslovi pogoduju dugotrajnom očuvanju DNK?", [
+        "Niska temperatura, suvoća i odsustvo svetlosti",
+        "Visoka temperatura i velika vlažnost",
+        "Direktna sunčeva svetlost",
+        "Čuvanje vlažnog materijala u zatvorenoj plastici na sobnoj temperaturi"], 0,
+     "Hladni, suvi i tamni uslovi usporavaju procese degradacije DNK."),
+    ("Koji je osnovni cilj hemijske lize tokom izolacije DNK?", [
+        "Narušavanje ćelijskih membrana i oslobađanje ćelijskog sadržaja",
+        "Umnožavanje STR lokusa",
+        "Razdvajanje alela po veličini",
+        "Određivanje koncentracije DNK UV svetlošću"], 0,
+     "Hemijska liza koristi reagense koji rastvaraju membrane i oslobađaju DNK."),
+    ("Koja je uloga EDTA tokom izolacije DNK?", [
+        "Vezuje dvovalentne jone i inhibira DNK-aze",
+        "Seče DNK na specifičnim sekvencama",
+        "Fluorescentno obeležava STR alele",
+        "Umnožava ciljnu DNK sekvencu"], 0,
+     "EDTA helira jone poput Mg2+, koji su potrebni mnogim DNK-azama."),
+    ("Šta se može proceniti odnosom apsorbancija A260/A280?", [
+        "Čistoća DNK u odnosu na proteinsku kontaminaciju",
+        "Broj STR alela",
+        "Dužina svakog hromozoma",
+        "Broj ćelija u uzorku"], 0,
+     "Za relativno čistu DNK očekuje se odnos A260/A280 približno 1,8.")
+]
+
+EXERCISE2_SUMMARY = '\n### 1. Opšta načela postupanja sa biološkim tragovima\nTragovi se uočavaju, fotografišu, evidentiraju, prikupljaju/izuzimaju i pakuju za dalju analizu. Važni su količina, čistoća i brzo dostavljanje uzorka. Svaki trag se zasebno obeležava i pakuje; koristi se sterilan pribor, jednokratne rukavice i zaštitna oprema, uz minimalnu manipulaciju i sprečavanje unakrsne kontaminacije.\n\n### 2. Prikupljanje i pakovanje\nSa velikih i nepokretnih podloga tragovi se uzorkuju sterilnim brisevima. Vlažne tragove je poželjno osušiti pre uzorkovanja; veoma suvi tragovi mogu se uzorkovati blago navlaženim brisem/filter-papirom ili struganjem. Suvi tragovi se mogu izuzeti struganjem na čist papir, izrezivanjem dela podloge ili izuzimanjem celog predmeta. Odeća sa tragovima pakuje se u papirnu ambalažu. Tečni uzorci se čuvaju u odgovarajućim sterilnim epruvetama.\n\n### 3. Krv\nTragovi krvi mogu biti slivanje, natapanje tkanine, lokve, prskotine, tragovi preneti dodirom i ostaci krvi; indirektni tragovi mogu nastati ispiranjem zakrvavljenih predmeta. Svaki trag se fotografiše, obeležava i pakuje odvojeno. Tečna krv za DNK analizu može se uzeti u epruvete sa EDTA; heparin nije preporučljiv zbog mogućeg inhibitornog uticaja. Za toksikološke analize koristi se natrijum-fluorid. Luminol i preliminarne test-trake ukazuju na moguće prisustvo krvi, ali pozitivna preliminarna reakcija sama po sebi ne dokazuje ljudsko poreklo. Potvrdni testovi mogu utvrditi humano poreklo.\n\n### 4. Sperma\nTragovi sperme mogu biti tečni ili sasušeni. Tečni tragovi mogu se prikupiti suvim sterilnim brisem ili pipetom, a bris se suši pre pakovanja. Sasušene mrlje se pakuju sa predmetom ili se izuzima deo podloge. UV svetlost može pomoći u lokalizaciji, a preliminarni testovi mogu detektovati kiselu fosfatazu. Potvrdne metode uključuju detekciju PSA, semenogelina i mikroskopsku identifikaciju spermatozoida.\n\n### 5. Pljuvačka, urin i dlake\nPljuvačka sadrži epitelne ćelije i može se naći na opušcima, žvakama, kovertama, čašama i predmetima za ličnu upotrebu. Preliminarni testovi mogu detektovati aktivnost α-amilaze; DNK analiza se koristi za identifikaciju. Urin se može lokalizovati vizuelno ili UV svetlošću; preliminarni testovi mogu detektovati ureu ili kreatinin. Nepoznate dlake uzimaju se čistom pincetom bez oštećivanja korena i pakuju pojedinačno; referentne dlake uzimaju se sa više regiona vlasišta.\n\n### 6. Čuvanje, degradacija i kontaminacija\nDegradaciju ubrzavaju temperatura, vlaga, sunčeva svetlost, hemikalije i mikroorganizmi. Osušeni biološki materijal se čuva u papirnoj ambalaži, na suvom, hladnom i tamnom mestu. Kontaminacija može nastati u bilo kojoj fazi i mora se sprečavati odgovarajućom zaštitnom opremom, promenom rukavica, sterilnim priborom i zasebnim pakovanjem.\n'
+
+EXERCISE2_QUESTIONS = [
+    ("Koji je prvi korak nakon uočavanja biološkog traga na mestu događaja?", [
+        "Označavanje, opisivanje i fotodokumentovanje traga",
+        "Odmah mešanje sa drugim uzorcima",
+        "Pakovanje bez prethodnog pregleda",
+        "Pranje površine radi uklanjanja viška materijala"], 0,
+     "Trag se najpre fiksira dokumentovanjem, obeležavanjem i fotografisanjem, a zatim prikuplja."),
+    ("Kako se uzorkuju tragovi na velikim i nepokretnim površinama?", [
+        "Sterilnim brisevima",
+        "Isključivo pincetom",
+        "Uvek izrezivanjem cele površine",
+        "Papirnom maramicom koja se koristi za više tragova"], 0,
+     "Sterilni brisevi omogućavaju uzorkovanje tragova sa velikih ili nepokretnih podloga."),
+    ("Zašto je poželjno osušiti vlažan biološki trag pre pakovanja?", [
+        "Da bi se smanjio uticaj mikroorganizama i degradacija materijala",
+        "Da bi se povećao sadržaj vode u uzorku",
+        "Da bi se uklonila ljudska DNK",
+        "Da bi se sprečilo izdvajanje ćelija"], 0,
+     "Vlažnost pogoduje razvoju mikroorganizama koji mogu oštetiti biološki materijal."),
+    ("Kako se postupa sa veoma sasušenim tragom koji se uzorkuje brisom?", [
+        "Bris se može nakvasiti sterilnim fiziološkim rastvorom ili destilovanom vodom",
+        "Trag se natapa običnom vodom iz česme",
+        "Površina se pere deterdžentom",
+        "Uzorak se zagreva do ključanja"], 0,
+     "Blago navlažen sterilni bris može efikasnije prikupiti veoma sasušeni materijal."),
+    ("Zašto se koriste odvojene rukavice ili njihova zamena između uzoraka?", [
+        "Da bi se sprečio prenos biološkog materijala između tragova",
+        "Da bi se ubrzala amplifikacija DNK",
+        "Da bi se povećala količina uzorka",
+        "Da bi se izbeglo fotografisanje"], 0,
+     "Promena rukavica smanjuje rizik od unakrsne kontaminacije."),
+    ("Kako se uzorci različitih tragova pakuju?", [
+        "Svaki trag u zasebnu, odgovarajuću ambalažu",
+        "Svi tragovi zajedno u jednu kesu",
+        "Samo u hermetički zatvorenu plastičnu kesu",
+        "Bez ambalaže, uz zajedničku oznaku"], 0,
+     "Odvojeno pakovanje sprečava međusobni kontakt i kontaminaciju uzoraka."),
+    ("Koja ambalaža je pogodna za osušenu odeću sa tragovima krvi?", [
+        "Papirna kesa ili papirni džak",
+        "Vlažna plastična kesa",
+        "Staklena posuda napunjena vodom",
+        "Otvorena posuda bez oznake"], 0,
+     "Odeća sa osušenim tragovima pakuje se u papirnu ambalažu koja omogućava razmenu vlage."),
+    ("Koji antikoagulans se može nalaziti u epruveti za uzorkovanje krvi za DNK analizu?", [
+        "EDTA", "Heparin", "Natrijum-fluorid", "Etanol"], 0,
+     "EDTA sprečava koagulaciju; heparin se izbegava jer može inhibirati DNK analizu."),
+    ("Zašto se heparin ne preporučuje za uzorke krvi namenjene DNK analizi?", [
+        "Može inhibirati dalju DNK analizu",
+        "Razgrađuje sve eritrocite",
+        "Pretvara DNK u RNK",
+        "Uklanja leukocite iz uzorka"], 0,
+     "Heparin može delovati kao inhibitor u molekularnim analizama."),
+    ("Koji dodatak se koristi u epruvetama za krv namenjenu toksikološkoj analizi?", [
+        "Natrijum-fluorid", "EDTA u svim slučajevima", "Proteinaza K", "Agaroza"], 0,
+     "Za toksikološke analize tečna krv se može uzeti u epruvete sa natrijum-fluoridom."),
+    ("Kako se uzorkuje suv trag krvi sa velike, glatke površine?", [
+        "Sterilnim brisom navlaženim fiziološkim rastvorom ili destilovanom vodom",
+        "Pamučnom krpom korišćenom za više tragova",
+        "Direktnim ispiranjem u odvod",
+        "Dodavanjem deterdženta i struganjem"], 0,
+     "Navlažen sterilni bris omogućava prikupljanje osušenog traga sa površine."),
+    ("Koji oblik svetlosnog signala nastaje u reakciji luminola sa tragom krvi?", [
+        "Plava hemiluminiscencija",
+        "Crvena fluorescencija",
+        "Zelena fosforescencija",
+        "Žuta apsorpcija"], 0,
+     "U prisustvu vodonik-peroksida i hemoglobina luminol daje plavu hemiluminiscenciju."),
+    ("Šta pokazuje pozitivan preliminarni test na krv?", [
+        "Da je potreban dalji postupak potvrde i ispitivanja porekla traga",
+        "Da je trag sigurno ljudska krv",
+        "Da je DNK profil već identifikovan",
+        "Da trag potiče od određene osobe"], 0,
+     "Preliminarna reakcija ukazuje na moguće prisustvo krvi, ali ne utvrđuje ljudsko poreklo niti identitet."),
+    ("Koji princip koristi Hemastix test?", [
+        "Katalitičku aktivnost hemoglobina u reakciji oksidacije",
+        "Detekciju STR alela fluorescentnim bojama",
+        "Precipitaciju DNK",
+        "Merenje apsorbancije na 260 nm"], 0,
+     "Testne trake registruju reakciju povezanu sa katalitičkom aktivnošću hemoglobina."),
+    ("Koji test se koristi za potvrdu humanog porekla traga krvi?", [
+        "Imunohromatografski test koji prepoznaje humane krvne proteine",
+        "Luminol test",
+        "Phosphatesmo test",
+        "Skrob-jodni test"], 0,
+     "Testovi kao što su ABAcard HemaTrace i OBTI koriste imunološko prepoznavanje humanih krvnih proteina."),
+    ("Koji enzim se koristi u preliminarnom testiranju tragova sperme?", [
+        "Kisela fosfataza", "α-amilaza", "Ureaza", "DNK-polimeraza"], 0,
+     "Kisela fosfataza se nalazi u visokoj koncentraciji u spermi i osnova je testa Phosphatesmo."),
+    ("Koji nalaz predstavlja potvrdni pristup za identifikaciju sperme?", [
+        "Detekcija PSA ili spermatozoida mikroskopskom analizom",
+        "Samo plavo obojenje luminolom",
+        "Detekcija uree",
+        "Merenje apsorbancije na 280 nm"], 0,
+     "PSA testiranje i mikroskopska detekcija spermatozoida predstavljaju potvrdne pristupe."),
+    ("Koji enzim se koristi u preliminarnom testiranju pljuvačke?", [
+        "α-amilaza", "Kisela fosfataza", "Ureaza", "Katalaza"], 0,
+     "Pljuvačka sadrži α-amilazu; njena aktivnost može se ispitivati skrob-jodnim testom."),
+    ("Zašto je pljuvačka pogodna za DNK analizu?", [
+        "Često sadrži epitelne ćelije sa jedarnom DNK",
+        "Sadrži isključivo slobodnu mitohondrijsku DNK",
+        "Ne sadrži mikroorganizme",
+        "Uvek sadrži spermatozoide"], 0,
+     "Epitelne ćelije usne duplje predstavljaju izvor humane jedarne DNK."),
+    ("Zašto se osušeni biološki tragovi najčešće pakuju u papirnu ambalažu?", [
+        "Papir omogućava razmenu vlage i smanjuje rizik od razvoja plesni i buđi",
+        "Papir sprečava svaku promenu DNK tokom neograničenog vremena",
+        "Papir sterilizuje uzorak",
+        "Papir uklanja kontaminaciju koja je već prisutna"], 0,
+     "Dobro osušeni tragovi u papirnoj ambalaži imaju manji rizik od zadržavanja vlage i razvoja mikroorganizama.")
+]
+
+
 def prepare_quiz_questions(key, questions):
-    """Ravnomerno raspoređuje tačne odgovore na pozicije A–D."""
-    rng = random.Random(f"forenzicka-biologija-{key}")
-    correct_positions = [0, 1, 2, 3] * (len(questions) // 4)
-    correct_positions += list(range(len(questions) % 4))
+    """Stabilno nasumično menja redosled pitanja i ponuđenih odgovora."""
+    seed_key = f"_quiz_seed_{key}"
+    if seed_key not in st.session_state:
+        st.session_state[seed_key] = random.SystemRandom().randint(0, 2**32 - 1)
+    rng = random.Random(st.session_state[seed_key])
+    shuffled_questions = list(questions)
+    rng.shuffle(shuffled_questions)
+
+    correct_positions = [0, 1, 2, 3] * (len(shuffled_questions) // 4)
+    correct_positions += list(range(len(shuffled_questions) % 4))
     rng.shuffle(correct_positions)
 
     prepared = []
-    for item, correct_position in zip(questions, correct_positions):
+    for item, correct_position in zip(shuffled_questions, correct_positions):
         question, options, correct_index, explanation = item
         correct_answer = options[correct_index]
         distractors = [option for index, option in enumerate(options) if index != correct_index]
@@ -404,19 +631,33 @@ def render_quiz(key, questions):
                 if i != len(questions):
                     st.divider()
 
-tab1, tab2 = st.tabs(["📘 Prvo predavanje — Forenzička genetika", "🔬 Prve vežbe — Mesto zločina i tragovi"])
+tab_predavanja, tab_vezbe = st.tabs(["📘 Predavanja", "🔬 Vežbe"])
 
-with tab1:
-    st.header("Predavanje 1: Uvod u forenzičku genetiku")
-    with st.expander("Sažetak lekcije", expanded=True):
-        st.markdown(LECTURE_SUMMARY)
-    render_quiz("lecture", LECTURE_QUESTIONS)
+with tab_predavanja:
+    predavanje1, predavanje2 = st.tabs(["Predavanje 1 — Uvod", "Predavanje 2 — DNK analiza"])
+    with predavanje1:
+        st.header("Predavanje 1: Uvod u forenzičku genetiku")
+        with st.expander("Sažetak lekcije", expanded=True):
+            st.markdown(LECTURE_SUMMARY)
+        render_quiz("lecture1", LECTURE_QUESTIONS)
+    with predavanje2:
+        st.header("Predavanje 2: Forenzička genetika — DNK analiza bioloških tragova")
+        with st.expander("Sažetak lekcije", expanded=True):
+            st.markdown(LECTURE2_SUMMARY)
+        render_quiz("lecture2", LECTURE2_QUESTIONS)
 
-with tab2:
-    st.header("Vežba 1: Mesto zločina i tragovi sa lica mesta")
-    with st.expander("Sažetak lekcije", expanded=True):
-        st.markdown(EXERCISE_SUMMARY)
-    render_quiz("exercise", EXERCISE_QUESTIONS)
+with tab_vezbe:
+    vezbe1, vezbe2 = st.tabs(["Vežba 1 — Mesto zločina", "Vežba 2 — Uzorkovanje"])
+    with vezbe1:
+        st.header("Vežba 1: Mesto zločina i tragovi sa lica mesta")
+        with st.expander("Sažetak lekcije", expanded=True):
+            st.markdown(EXERCISE_SUMMARY)
+        render_quiz("exercise1", EXERCISE_QUESTIONS)
+    with vezbe2:
+        st.header("Vežba 2: Uzorkovanje i testiranje bioloških tragova")
+        with st.expander("Sažetak lekcije", expanded=True):
+            st.markdown(EXERCISE2_SUMMARY)
+        render_quiz("exercise2", EXERCISE2_QUESTIONS)
 
 st.divider()
 st.caption(
