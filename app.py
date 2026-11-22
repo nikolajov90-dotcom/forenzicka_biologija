@@ -123,6 +123,57 @@ smanjuje mogućnost kontaminacije.
 """
 
 # Each item: question, options, correct option index, explanation
+LECTURE3_SUMMARY = """
+### 1. STR markeri
+Short Tandem Repeats (STR) su kratke sekvence nukleotida koje se ponavljaju uzastopno. Broj ponovaka varira između osoba, pa su STR lokusi korisni za forenzičko DNK profilisanje. Većina STR lokusa nalazi se u nekodirajućim regionima genoma.
+
+### 2. Nomenklatura i struktura
+STR lokusi mogu biti imenovani prema genu u kojem se nalaze (npr. TH01) ili oznakom koja uključuje hromozom i identifikator lokusa (npr. D21S11). Motivi mogu imati jednu do šest baza; tetranukleotidni markeri često su zastupljeni u forenzičkim panelima. STR mogu biti jednostavni, složeni, kompleksni ili hipervarijabilni. Alelne oznake najčešće predstavljaju broj ponovaka; decimalne oznake mogu ukazivati na delimične ponovke.
+
+### 3. Genotipovi i profili
+Homozigot ima dva ista alela na lokusu, a heterozigot dva različita. Profil više STR lokusa ima veću diskriminacionu moć od pojedinačnog lokusa. Mešani uzorci mogu sadržati više alela na pojedinim lokusima.
+
+### 4. Laboratorijski postupak
+STR analiza obuhvata izolaciju DNK, kvantifikaciju, multiplex PCR, kapilarnu elektroforezu, genotipizaciju i interpretaciju. PCR setovi obično sadrže master mix, fluorescentno obeležene prajmere, interni veličinski standard i alelnu lestvicu.
+
+### 5. Amelogenin
+AMELX i AMELY koriste se za procenu hromozomskog pola. Analiza se zasniva na razlikama u dužini amplifikovanih regiona. Amelogenin nije STR lokus.
+
+### 6. Elektroforeza i elektroferogram
+Kapilarna elektroforeza razdvaja fluorescentno obeležene fragmente prema veličini. Sirovi elektroferogram prikazuje signal (RFU) u odnosu na migraciju. Interni veličinski standard omogućava određivanje veličine fragmenata, a alelna lestvica dodeljivanje alelnih oznaka. Fluorescentne boje razlikuju lokuse.
+
+### 7. Problemi pri interpretaciji
+Mogu se javiti nizbrdica signala, ispadanje alela (drop-out), trialelne varijante i stutter pikovi koji nastaju PCR slippage-om. Nalaze treba procenjivati u kontekstu kvaliteta uzorka i analitičkih kriterijuma.
+
+### 8. Poređenje i statistika
+Poklapanje profila interpretira se statistički, uzimajući u obzir broj lokusa, alelne frekvencije i verovatnoću slučajnog poklapanja. Standardni STR profili uglavnom ne razlikuju jednojajčane blizance. CODIS služi za pohranu i poređenje DNK profila u skladu sa odgovarajućim pravilima.
+"""
+
+LECTURE3_QUESTIONS = [
+("Šta čini STR lokuse korisnim za forenzičko profilisanje?", ["Varijabilan broj ponovaka među osobama", "Uvek isti broj ponovaka", "Nalaze se samo na Y hromozomu", "Ne mogu se amplifikovati"], 0, "Polimorfizam broja ponovaka omogućava razlikovanje alela."),
+("Šta označava TH01?", ["STR lokus imenovan prema genu u kojem se nalazi", "Marker na hromozomu 1", "Veličinski standard", "Alelna lestvica"], 0, "TH01 je lokus u intronu gena za tirozin-hidroksilazu."),
+("U oznaci D21S11, broj 21 označava…", ["Hromozom na kojem se lokus nalazi", "Broj alela", "Broj ponovaka", "Dužinu fragmenta"], 0, "Broj 21 označava hromozom 21."),
+("Koji STR motivi su često zastupljeni u forenzičkim panelima?", ["Tetranukleotidni", "Heksanukleotidni", "Samo mononukleotidni", "Motivi bez ponavljanja"], 0, "Tetranukleotidni STR markeri često se koriste u panelima."),
+("Šta predstavlja alelna oznaka vWA 12?", ["Dvanaest ponovaka motiva", "Dvanaest lokusa", "Fragment od 12 bp", "Dvanaest boja"], 0, "Alelna oznaka uglavnom predstavlja broj ponovaka."),
+("Šta može označavati decimalna STR alelna oznaka?", ["Delimični ponovak", "Dodatni hromozom", "PCR inhibitor", "Veličinski standard"], 0, "Decimalne oznake mogu predstavljati delimičnu jedinicu ponavljanja."),
+("Homozigot na STR lokusu ima…", ["Dva ista alela", "Tri različita alela", "Samo jedan hromozom", "Dva različita alela"], 0, "Homozigot ima iste alelne oznake na oba alela."),
+("Heterozigot na STR lokusu ima…", ["Dva različita alela", "Dva identična alela", "Tri identična alela", "Nema DNK"], 0, "Heterozigot poseduje dva različita alela."),
+("Šta može ukazivati na mešani DNK profil?", ["Više od dva alela na lokusu", "Po jedan pik na svim lokusima", "Samo amelogenin", "Odsustvo fluorescentnog signala"], 0, "Mešani uzorci mogu sadržati više od dva alela na lokusu."),
+("Koji je uobičajeni redosled STR analize?", ["Izolacija, kvantifikacija, PCR, elektroforeza, interpretacija", "Elektroforeza, izolacija, fotografisanje", "PCR, pakovanje, izolacija", "Interpretacija, uzorkovanje, PCR"], 0, "STR workflow obuhvata izolaciju i kvantifikaciju, amplifikaciju, elektroforezu i interpretaciju."),
+("Koja komponenta određuje veličinu fragmenata na elektroferogramu?", ["Interni veličinski standard", "Alelna lestvica", "Proteinaza K", "EDTA"], 0, "Interni veličinski standard omogućava procenu veličine fragmenata."),
+("Koja komponenta omogućava dodeljivanje alelnih oznaka?", ["Alelna lestvica", "Interni veličinski standard", "Ekstrakcioni pufer", "Pipeta"], 0, "Alelna lestvica sadrži fragmente poznatih alelnih veličina."),
+("Šta omogućava multiplex PCR?", ["Amplifikaciju više lokusa u jednoj reakciji", "Sekvenciranje bez DNK", "Detekciju proteina", "Razdvajanje fragmenata bez elektroforeze"], 0, "Multiplex PCR amplifikuje više ciljnih lokusa istovremeno."),
+("Koja je uloga amelogenina u forenzičkim kompletima?", ["Procena hromozomskog pola", "Određivanje krvne grupe", "Detekcija sperme", "Procena starosti"], 0, "AMELX i AMELY se koriste za procenu hromozomskog pola."),
+("Da li amelogenin pripada STR lokusima?", ["Ne, koristi strukturnu razliku AMELX i AMELY", "Da, tetranukleotidni je STR", "Nalazi se samo na autosomima", "To je proteinski test"], 0, "Amelogenin nije STR; analiziraju se razlike u dužini amplifikovanih regiona."),
+("Šta predstavlja RFU?", ["Intenzitet fluorescentnog signala", "Broj ponovaka", "Dužinu kapilara", "Koncentraciju pufera"], 0, "RFU je relativna jedinica fluorescentnog signala."),
+("Šta je allelic drop-out?", ["Nedetektovanje jednog prisutnog alela", "Pojava dodatnog lokusa", "Uvećanje svih pikova", "Promena boje"], 0, "Drop-out je gubitak detekcije alela, često kod male ili degradirane količine DNK."),
+("Kako nastaje stutter pik?", ["PCR slippage", "Kontaminacija puferom", "Dodavanje standarda", "Fotografisanje"], 0, "Stutter je artefakt amplifikacije usled klizanja polimeraze na ponavljajućim sekvencama."),
+("Šta može predstavljati trialelna varijanta?", ["Tri detektovana alela na lokusu", "Uvek mešavinu tri osobe", "Automatski nevažeći rezultat", "Odsustvo signala"], 0, "Trialelne varijante mogu imati različite genetičke ili biološke uzroke."),
+("Zašto standardni STR profili obično ne razlikuju jednojajčane blizance?", ["Profili na analiziranim lokusima uglavnom su identični", "Blizanci nemaju STR", "STR se analiziraju samo kod žena", "Imaju različite lestvice"], 0, "Jednojajčani blizanci uobičajeno imaju identične standardne STR profile."),
+("Na čemu se zasniva statistička procena poklapanja?", ["Alelne frekvencije i verovatnoća slučajnog poklapanja", "Boja elektroferograma", "Broj fotografija", "Temperatura"], 0, "Procena koristi frekvencije alela i model slučajnog poklapanja."),
+]
+
+
 LECTURE_QUESTIONS = [
 ("Šta je osnovni zadatak forenzičkih nauka?", [
     "Da prikupljaju, obrađuju i tumače informacije iz prošlosti radi izvođenja zaključaka",
@@ -214,6 +265,49 @@ LECTURE_QUESTIONS = [
     "Ne koristi fluorescentni signal",
     "Zamenjuje sve korake izolacije DNK"], 0,
  "Udžbenik navodi Real-time PCR kao osetljivu metodu kvantifikacije humane DNK, uz mogućnost procene degradacije i inhibitora."),
+]
+
+EXERCISE3_SUMMARY = """
+### 1. Daktiloskopija i papilaroskopija
+Daktiloskopija je registracija i identifikacija osoba poređenjem papilarnih linija prstiju. Papilaroskopija obuhvata proučavanje papilarnih linija prstiju, dlanova i tabana.
+
+### 2. Papilarne linije
+Papilarne linije čine reljefni grebenovi i brazde. Njihove važne osobine su postojanost, individualnost i mogućnost prenošenja tragova na dodirnute predmete. Osnovni obrasci su lukovi, petlje i vrtlozi.
+
+### 3. Tipovi otisaka
+Obrasci uključuju luk, šatorasti luk, ulnarnu i radijalnu petlju, vrtlog i složene varijante. Klasifikacija olakšava organizovanje zbirki, dok identifikacija zahteva poređenje detalja.
+
+### 4. Minucije
+Karakteristične tačke (minucije) uključuju završetke linija, grananja i druge morfološke detalje. Porede se prema tipu, položaju i orijentaciji.
+
+### 5. Zbirke i sistemi
+Dekadaktiloskopske zbirke sadrže otiske svih deset prstiju na jednom kartonu, a monodaktiloskopske zbirke organizuju otiske pojedinačno. AFIS sistemi omogućavaju automatizovano pretraživanje i poređenje otisaka.
+
+### 6. Razvoj i izuzeci
+Papilarni obrasci formiraju se tokom prenatalnog razvoja i uobičajeno ostaju stabilni. Adermatoglifija je veoma retko stanje odsustva papilarnih otisaka.
+"""
+
+EXERCISE3_QUESTIONS = [
+("Koja oblast identifikuje osobe poređenjem papilarnih linija prstiju?", ["Daktiloskopija", "Serologija", "Entomologija", "Palinologija"], 0, "Daktiloskopija poredi papilarne linije prstiju."),
+("Šta obuhvata papilaroskopija?", ["Papilarne linije prstiju, dlanova i tabana", "Samo DNK", "Krvne grupe", "Zube"], 0, "Papilaroskopija proučava papilarne linije prstiju, dlanova i tabana."),
+("Koja osobina omogućava identifikacionu primenu papilarnih linija?", ["Individualnost", "Dnevna promenljivost", "Odsustvo reljefa", "Uniformnost"], 0, "Papilarni obrasci individualno se razlikuju."),
+("Koja osobina opisuje stabilnost obrazaca?", ["Postojanost", "Fluorescencija", "Hemiluminiscencija", "STR polimorfizam"], 0, "Papilarni obrasci uobičajeno ostaju stabilni tokom života."),
+("Koje su osnovne grupe otisaka?", ["Lukovi, petlje i vrtlozi", "Pore, folikuli i medula", "STR, SNP i VNTR", "Krv, pljuvačka i sperma"], 0, "Osnovni obrasci su lukovi, petlje i vrtlozi."),
+("Ulnarna petlja je usmerena prema…", ["Ulni", "Radijusu", "Vrh prsta", "Središtu dlana"], 0, "Ulnarna petlja usmerena je prema strani ulne."),
+("Radijalna petlja je usmerena prema…", ["Radijusu", "Ulni", "Vrh prsta", "Središtu dlana"], 0, "Radijalna petlja usmerena je prema radijusu."),
+("Šta su minucije?", ["Karakteristični detalji papilarnih linija", "Samo pore", "DNK aleli", "Slojevi epidermisa"], 0, "Minucije su karakteristični detalji otiska."),
+("Koji su česti tipovi minucija?", ["Završetak linije i grananje", "Luk i vrtlog", "Pora i folikul", "Alel i lokus"], 0, "Završeci i grananja su česte minucije."),
+("Koji parametri se porede kod minucija?", ["Tip, položaj i ugao", "Boja kože", "Broj prstiju", "Širina papira"], 0, "Porede se morfologija, položaj i orijentacija detalja."),
+("Šta sadrži dekadaktiloskopska zbirka?", ["Otiske svih deset prstiju na jednom kartonu", "Samo palac", "DNK profile", "Samo dlanove"], 0, "Dekadaktiloskopski karton obuhvata svih deset prstiju."),
+("Kako je organizovana monodaktiloskopska zbirka?", ["Svaki otisak na zasebnom kartonu/fiši", "Svi otisci na jednom kartonu", "Samo latentni otisci", "Samo DNK"], 0, "Monodaktiloskopska zbirka organizuje otiske pojedinačno."),
+("Koja je funkcija AFIS sistema?", ["Automatizovano pretraživanje i poređenje otisaka", "PCR", "Kvantifikacija proteina", "Mikroskopija"], 0, "AFIS automatizuje pretraživanje i poređenje otisaka."),
+("Gde se kontaktni otisci mogu pronaći?", ["Na predmetima koje je osoba dodirivala", "Samo na poroznim površinama", "Samo na koži", "Samo na filter-papiru"], 0, "Otisci se kontaktom prenose na različite površine."),
+("Šta je latentni otisak?", ["Otisak koji nije odmah vidljiv i zahteva vizualizaciju", "Uvek obojen otisak", "DNK profil", "Otisak iz baze"], 0, "Latentni otisci često zahtevaju metode vizualizacije."),
+("Koja struktura formira papilarne linije?", ["Grebenovi i brazde kože", "STR lokusi", "Samo znojni kanali", "Dlake"], 0, "Papilarne linije čine reljefni grebenovi i brazde."),
+("Kada se papilarni obrasci formiraju?", ["Tokom prenatalnog razvoja", "Tek posle rođenja", "U pubertetu", "Posle 40. godine"], 0, "Papilarni obrasci formiraju se prenatalno."),
+("Šta označava adermatoglifija?", ["Retko stanje odsustva papilarnih otisaka", "Vrtlog", "Povredu", "Latentni otisak"], 0, "Adermatoglifija je veoma retko stanje odsustva papilarnih otisaka."),
+("Zašto osnovna klasifikacija obrazaca nije dovoljna za identifikaciju?", ["Potrebno je poređenje detaljnih karakterističnih tačaka", "Obrasci su identični", "Klasifikacija ne koristi otiske", "Otisci se ne fotografišu"], 0, "Identifikacija se oslanja na detaljno poređenje minucija."),
+("Kako se otisci jednojajčanih blizanaca razlikuju?", ["Papilarni obrasci se individualno razlikuju", "Uvek su identični", "Nemaju minucije", "Razlikuju se samo po boji"], 0, "Papilarni obrasci razlikuju se čak i kod jednojajčanih blizanaca."),
 ]
 
 EXERCISE_QUESTIONS = [
@@ -634,7 +728,7 @@ def render_quiz(key, questions):
 tab_predavanja, tab_vezbe = st.tabs(["📘 Predavanja", "🔬 Vežbe"])
 
 with tab_predavanja:
-    predavanje1, predavanje2 = st.tabs(["Predavanje 1 — Uvod", "Predavanje 2 — DNK analiza"])
+    predavanje1, predavanje2, predavanje3 = st.tabs(["Predavanje 1 — Uvod", "Predavanje 2 — DNK analiza", "Predavanje 3 — STR profilisanje"])
     with predavanje1:
         st.header("Predavanje 1: Uvod u forenzičku genetiku")
         with st.expander("Sažetak lekcije", expanded=True):
@@ -645,9 +739,14 @@ with tab_predavanja:
         with st.expander("Sažetak lekcije", expanded=True):
             st.markdown(LECTURE2_SUMMARY)
         render_quiz("lecture2", LECTURE2_QUESTIONS)
+    with predavanje3:
+        st.header("Predavanje 3: Forenzičko STR profilisanje i interpretacija elektroferograma")
+        with st.expander("Sažetak lekcije", expanded=True):
+            st.markdown(LECTURE3_SUMMARY)
+        render_quiz("lecture3", LECTURE3_QUESTIONS)
 
 with tab_vezbe:
-    vezbe1, vezbe2 = st.tabs(["Vežba 1 — Mesto zločina", "Vežba 2 — Uzorkovanje"])
+    vezbe1, vezbe2, vezbe3 = st.tabs(["Vežba 1 — Mesto zločina", "Vežba 2 — Uzorkovanje", "Vežba 3 — Daktiloskopija"])
     with vezbe1:
         st.header("Vežba 1: Mesto zločina i tragovi sa lica mesta")
         with st.expander("Sažetak lekcije", expanded=True):
@@ -658,6 +757,11 @@ with tab_vezbe:
         with st.expander("Sažetak lekcije", expanded=True):
             st.markdown(EXERCISE2_SUMMARY)
         render_quiz("exercise2", EXERCISE2_QUESTIONS)
+    with vezbe3:
+        st.header("Vežba 3: Daktiloskopija")
+        with st.expander("Sažetak lekcije", expanded=True):
+            st.markdown(EXERCISE3_SUMMARY)
+        render_quiz("exercise3", EXERCISE3_QUESTIONS)
 
 st.divider()
 st.caption(
